@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#050505">
+    <title>Stock Premium | Inventario</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="dark-gold-theme">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <main class="app-container glass-panel">
+        <!-- Welcome View -->
+        <section id="welcome-view" class="view active welcome-view">
+            <div class="welcome-content">
+                <img src="portada.jpg" alt="Pangasa Baby" class="cover-image"
+                    onerror="this.src='portada.png'; this.onerror=function(){this.style.display='none'};">
+                <button id="btn-start" class="btn-primary btn-glow">Empezar</button>
+            </div>
+        </section>
+
+        <!-- Header (Only for Dashboard) -->
+        <header class="app-header hidden" id="app-header">
+            <div class="logo">
+                <i data-lucide="crown"></i>
+                <h1>Pangasa Baby</h1>
+            </div>
+            <p class="subtitle">Búsqueda rápida de inventario y ubicaciones</p>
+        </header>
+
+        <div id="loading-state" class="loading-state hidden">
+            <div class="spinner"></div>
+            <p>Sincronizando base de datos...</p>
+        </div>
+
+        <section id="dashboard-view" class="view hidden">
+            <div class="dashboard-header">
+                <div class="search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="search-input" placeholder="Buscar por modelo, prenda, color o cliente..."
+                        autocomplete="off">
+                </div>
+                <div class="province-filter-wrapper">
+                    <select id="province-filter" class="glass-dropdown">
+                        <option value="">🗺️ Todas las provincias</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-pill glass-card">
+                    <span class="stat-label">Modelos</span>
+                    <span class="stat-value" id="stat-models">0</span>
+                </div>
+                <div class="stat-pill glass-card">
+                    <span class="stat-label">Stock Localizado</span>
+                    <span class="stat-value" id="stat-stock">0</span>
+                </div>
+            </div>
+
+            <div class="results-container" id="results-list"></div>
+
+            <div id="no-results" class="hidden empty-state">
+                <i data-lucide="search-x"></i>
+                <p>No hay prendas que coincidan con tu búsqueda exacta.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
